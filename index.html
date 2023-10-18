@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cores</title>
+    <style>
+        :root{
+            --tamanho_padrao: 120px;
+        }
+        body{
+            background-color: rgb(0, 4, 22);
+        }
+        input{
+            margin: 0;
+            padding: 0;
+            width: calc(100% - 2px);
+            height: 26px;
+            text-align: center;
+            border-radius: 8px;
+            border: none;
+        }
+        .container{
+            display: grid;
+            justify-content: center;
+            grid-template-rows: auto auto;
+        }
+        .conteudos_container{
+            display: flex;
+            justify-content: center;
+        }
+        .items{
+            display: grid;
+            gap: 6px;
+            width: var(--tamanho_padrao);
+            margin: 8px;
+        }
+        .square{
+            width: var(--tamanho_padrao);
+            height: var(--tamanho_padrao);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border-radius: 8px;
+            border: 1px solid rgb(155, 155, 155);
+            box-sizing: border-box;
+        }
+        .div_resultado{
+            display: grid;
+            color: #fff;
+            text-align: center;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="conteudos_container">
+            <div class="items">
+                <div class="square red">
+                    <p>R(Red)</p>
+                </div>
+                <div><input id="id_red" onchange="adicionar_cor()" type="number" min="0"  max="255" value="255"></div>
+            </div>
+            <div class="items">
+                <div class="square green">
+                    <p>G(Green)</p>
+                </div>
+                <div><input id="id_green" onchange="adicionar_cor()" type="number" min="0"  max="255" value="255"></div>
+            </div>
+            <div class="items">
+                <div class="square blue">
+                    <p>B(Blue)</p>
+                </div>
+                <div><input id="id_blue" onchange="adicionar_cor()" type="number" min="0"  max="255" value="255"></div>
+            </div>
+        </div>
+        <div class="conteudos_container">
+            <div class="div_resultado">
+                <h4>Resultado</h4>
+                <div id="resultado" class="square" style="background-color: rgb(255, 255, 255)">
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let div_resultado = document.getElementById("resultado")
+        let id_red = document.getElementById("id_red")
+        let id_green = document.getElementById("id_green")
+        let id_blue = document.getElementById("id_blue")
+
+        function adicionar_cor(){
+            atribuir(id_red.value, id_green.value, id_blue.value)
+        }
+
+        function atribuir(red, green, blue){
+            div_resultado.setAttribute("style", `background-color: rgb(${red}, ${green}, ${blue})`)
+        }
+    </script>
+</body>
+</html>
